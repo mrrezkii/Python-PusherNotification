@@ -5,10 +5,17 @@ pn_client = PushNotifications(
     secret_key='A975DDC2A5253248B6DEA2167B6ADBFC20BE8473F27B671D0D50FF1103EA3F7A',
 )
 
+# Const variable | ready to change
+TOPIC = "aktivitas"
+ALERT_NOTIF = "Report Created"
+TITLE_NOTIF = "First notif"
+BODY_NOTIF = "First notif body"
+
+
 response = pn_client.publish(
-    interests=['hello'],
-    publish_body={'apns': {'aps': {'alert': 'Report Created'}},
-                  'fcm': {'notification': {'title': "First notif", 'body': "First notif body"}}}
+    interests=[TOPIC],
+    publish_body={'apns': {'aps': {'alert': ALERT_NOTIF}},
+                  'fcm': {'notification': {'title': TITLE_NOTIF, 'body': BODY_NOTIF}}}
 )
 
 print(response['publishId'])
